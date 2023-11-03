@@ -6,11 +6,18 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Url;
+use App\Models\User;
 
 class UrlControllerTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->actingAs(User::factory()->create());
+    }
 
     /**
      * @test
